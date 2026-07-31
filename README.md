@@ -31,6 +31,17 @@
 - Build-System: Make
 - Versionsverwaltung: Git, GitHub
 
+## Installation
+
+- Um den PSP-SystemMonitor selbst verwenden zu können müssen sie folgenden Schritten folgen:
+  1. Laden Sie die Datei names "EBOOT.PBP" unter "Releases" herunter
+  2. Verbinden sie ihre PSP per USB-Kabel mit ihrem Laptop (Gehen sie dazu nach anstecken des Kabels in den Einstellungen ihrer PSP auf "USB verbindung herstellen")
+  3. Greifen Sie auf den Memory-Stick ihrer PSP zu und und gehen sie in den Unterordner namen "Games"
+  4. Erstellen sie dort einen neuen Ordner an und geben sie diesem einen beliebigen Namen. (Am besten "SystemMonitor" oder ähnlich, da dieser Name entscheidet, wie das Programm auf ihrer Konsole heißen wird)
+  5. Fügen sie die Datei "EBOOT.PBP" dort ein
+  6. Trennen sie nun sicher die PSP von ihrem Laptop
+  7. Nun finden sie unter ihren PSP Spielen die SystemMonitor-Anwendung
+  
 ## Demo: 
 
 ![App im PSP-Homescreen:](Demo/Demo2.png)
