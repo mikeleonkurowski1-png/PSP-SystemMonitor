@@ -1,7 +1,7 @@
 # PSP-SystemMonitor
 
-Ein Homebrew-SystemMonitor für die Sony PSP, geschrieben in C mit dem PSPSDK
-Das Programm soll verschiedene Systeminformationen der PSP, wie Akkustand, CPU-Auslastung, etc übersichtlich auf dem Bildschirm darstellen und soll als erstes Einstiegsprojekt in die Entwicklung von PSP-Homebrew Anwendungen, bzw allgemein als Einstieg in die hardwarenahe Entwicklung mit C für mich dienen.
+- in Homebrew-SystemMonitor für die Sony PSP, geschrieben in C mit dem PSPSDK.
+- Das Programm soll verschiedene Systeminformationen der PSP, wie Akkustand, CPU-Auslastung, etc übersichtlich auf dem Bildschirm darstellen und soll als erstes Einstiegsprojekt in die Entwicklung von PSP-Homebrew Anwendungen, bzw allgemein als Einstieg in die hardwarenahe Entwicklung mit C für mich dienen.
 
 ## Features (in Arbeit)
 
@@ -14,7 +14,7 @@ Das Programm soll verschiedene Systeminformationen der PSP, wie Akkustand, CPU-A
 
 - [x] Projekt aufsetzen (PSPSDK, GitHub-Repository)
 - [X] Erstes Programm auf der PSP ausführen
-- [ ] Controller-Eingaben verarbeiten
+- [X] Controller-Eingaben verarbeiten
 - [ ] Menü erstellen
 - [ ] Batteriestatus anzeigen
 - [ ] Informationen zum Arbeitsspeicher anzeigen
