@@ -72,28 +72,28 @@ if (menu == 1) {
     pspDebugScreenSetXY(0,5);
     pspDebugScreenPrintf("Software-Monitor:");
     pspDebugScreenSetXY(0,7);
-    pspDebugScreenPrintf("Devkit Version: %d", devkitVersion);
+    pspDebugScreenPrintf("Devkit Version: %d      ", devkitVersion);
     
     
     pspDebugScreenSetXY(0,11);
     pspDebugScreenPrintf("Hardware-Monitor: ");
     
         pspDebugScreenSetXY(0,13);
-    pspDebugScreenPrintf("Current CPU Clock: %d MHz", cpuClock);
+    pspDebugScreenPrintf("Current CPU Clock: %d MHz     ", cpuClock);
     pspDebugScreenSetXY(0,14);
-    pspDebugScreenPrintf("Maximum CPU Clock: %d MHz", MaximumClock);
+    pspDebugScreenPrintf("Maximum CPU Clock: %d MHz      ", MaximumClock);
 
     pspDebugScreenSetXY(0,16);
-    pspDebugScreenPrintf("Free Memory: %.2f MB", totalFreeRAMSize / 1024.0 / 1024.0);
+    pspDebugScreenPrintf("Free RAM: %.2f MB      ", totalFreeRAMSize / 1024.0 / 1024.0);
 
     pspDebugScreenSetXY(0,18);
-    pspDebugScreenPrintf("Battery-Percent: %d%%", batteryPercent);
+    pspDebugScreenPrintf("Battery-Percent: %d%%      ", batteryPercent);
     if (chargingStatus) {
         pspDebugScreenSetXY(0,19);
-        pspDebugScreenPrintf("Battery-Charging: Yes");
+        pspDebugScreenPrintf("Battery-Charging: Yes      ");
     } else {
         pspDebugScreenSetXY(0,19);
-        pspDebugScreenPrintf("Battery-Charging: No");
+        pspDebugScreenPrintf("Battery-Charging: No   ");
 
     }
 
@@ -101,24 +101,22 @@ if (menu == 1) {
 
     if (wlanstatus2 == 1) {
         pspDebugScreenSetXY(0,21);
-        pspDebugScreenPrintf("WLAN-Switch-Status: ON");
+        pspDebugScreenPrintf("WLAN-Switch-Status: ON       ");
     } else {
         pspDebugScreenSetXY(0,21);
-        pspDebugScreenPrintf("WLAN-Switch-Status: OFF");
+        pspDebugScreenPrintf("WLAN-Switch-Status: OFF      ");
     }
     
     pspDebugScreenSetXY(0,32);
     pspDebugScreenPrintf("Press O to exit");
 
-    
-    
-
-if (controller.Buttons & PSP_CTRL_CIRCLE) {
-    aktiv = 0; //Wird O gedrückt, welches das Programm beendet
-}
 
 sceKernelDelayThread(100000); //Begrenzt wie schnell die Schleife läuft
 
+}
+
+if (controller.Buttons & PSP_CTRL_CIRCLE) {
+    aktiv = 0; //Wird O gedrückt, welches das Programm beendet
 }
 }
 
