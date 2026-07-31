@@ -8,7 +8,7 @@ CFLAGS = -O2 -G0 -Wall
 
 BUILD_PRX = 1
 
-LIBS = -lpspdebug -lpspdisplay
+LIBS = -lpspdebug -lpspdisplay -lpsppower -lpspctrl
 
 EXTRA_TARGETS = EBOOT.PBP
 
