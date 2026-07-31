@@ -1,5 +1,7 @@
+# PSP Build Dateien
 *.o
 *.elf
 *.prx
-*.PBP
+*.sfo
+EBOOT.PBP
 PARAM.SFO

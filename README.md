@@ -13,7 +13,7 @@ Das Programm soll verschiedene Systeminformationen der PSP, wie Akkustand, CPU-A
 ## Roadmap
 
 - [x] Projekt aufsetzen (PSPSDK, GitHub-Repository)
-- [ ] Erstes Programm auf der PSP ausführen
+- [X] Erstes Programm auf der PSP ausführen
 - [ ] Controller-Eingaben verarbeiten
 - [ ] Menü erstellen
 - [ ] Batteriestatus anzeigen

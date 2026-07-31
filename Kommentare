@@ -1,0 +1,7 @@
+//Wenn sich die alte EBOOT.PBP Datei nicht entfernen oder ändern lässt
+dann liegt es vermutlich an einem falschen abstecken wodurch linux die Datei
+automatisch auf read-only stellt. 
+
+//Um das zu fixen einfach im Terminal ausführen: sudo umount /run/media/$USER/B056-729D
+dann: sudo fsck.vfat -a /dev/sdd1
+dann: Wieder einstecken und sollte dann wieder funktionieren
