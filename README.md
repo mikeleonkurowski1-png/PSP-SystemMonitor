@@ -16,12 +16,11 @@
 - [X] Erstes Programm auf der PSP ausführen
 - [X] Controller-Eingaben verarbeiten
 - [X] Menü erstellen
-- [ ] Batteriestatus anzeigen
-- [ ] Informationen zum Arbeitsspeicher anzeigen
-- [ ] CPU-Informationen anzeigen
-- [ ] Firmware-Version anzeigen
-- [ ] Bildschirm regelmäßig aktualisieren
-- [ ] Einstellungen speichern
+- [X] Batteriestatus anzeigen
+- [X] Informationen zum Arbeitsspeicher anzeigen
+- [X] CPU-Informationen anzeigen
+- [X] Devkit-Version anzeigen
+- [X] Bildschirm regelmäßig aktualisieren
 - [ ] Optional: Farbiges Menü
 - [ ] Optional: Grafische Oberfläche
 

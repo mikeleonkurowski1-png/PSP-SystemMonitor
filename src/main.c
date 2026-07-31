@@ -57,42 +57,57 @@ if (menu == 0) {
 }
 if (menu == 1) {
     
+    
+    if (letztesmenu != menu) {
         pspDebugScreenClear();
         letztesmenu = menu;
     
     pspDebugScreenPrintf("====================================================================\n");
     pspDebugScreenPrintf("                         System-Monitor\n");
     pspDebugScreenPrintf("====================================================================\n\n");
+        }
+
+
     //pspDebugScreenPrintf("%d MHz\n", cpuClock);
-    pspDebugScreenPrintf("Software-Monitor: \n\n\n");
-    pspDebugScreenPrintf("Devkit Version: %d\n\n\n", devkitVersion);
+    pspDebugScreenSetXY(0,5);
+    pspDebugScreenPrintf("Software-Monitor:");
+    pspDebugScreenSetXY(0,7);
+    pspDebugScreenPrintf("Devkit Version: %d", devkitVersion);
     
     
-
-    pspDebugScreenPrintf("Hardware-Monitor: \n\n\n");
+    pspDebugScreenSetXY(0,11);
+    pspDebugScreenPrintf("Hardware-Monitor: ");
     
-    pspDebugScreenPrintf("Current CPU Clock: %d MHz\n", cpuClock);
-    pspDebugScreenPrintf("Maximum CPU Clock: %d MHz\n\n", MaximumClock);
+        pspDebugScreenSetXY(0,13);
+    pspDebugScreenPrintf("Current CPU Clock: %d MHz", cpuClock);
+    pspDebugScreenSetXY(0,14);
+    pspDebugScreenPrintf("Maximum CPU Clock: %d MHz", MaximumClock);
 
-    pspDebugScreenPrintf("Free Memory: %.2f MB\n\n", totalFreeRAMSize / 1024.0 / 1024.0);
+    pspDebugScreenSetXY(0,16);
+    pspDebugScreenPrintf("Free Memory: %.2f MB", totalFreeRAMSize / 1024.0 / 1024.0);
 
-    pspDebugScreenPrintf("Battery-Percent: %d%%\n", batteryPercent);
+    pspDebugScreenSetXY(0,18);
+    pspDebugScreenPrintf("Battery-Percent: %d%%", batteryPercent);
     if (chargingStatus) {
-        pspDebugScreenPrintf("Battery-Charging: Yes\n\n");
+        pspDebugScreenSetXY(0,19);
+        pspDebugScreenPrintf("Battery-Charging: Yes");
     } else {
-        pspDebugScreenPrintf("Battery-Charging: No\n\n");
+        pspDebugScreenSetXY(0,19);
+        pspDebugScreenPrintf("Battery-Charging: No");
 
     }
 
     
 
     if (wlanstatus2 == 1) {
-        pspDebugScreenPrintf("WLAN-Switch-Status: ON\n\n\n\n\n\n");
+        pspDebugScreenSetXY(0,21);
+        pspDebugScreenPrintf("WLAN-Switch-Status: ON");
     } else {
-        pspDebugScreenPrintf("WLAN-Switch-Status: OFF\n\n\n\n\n\n");
+        pspDebugScreenSetXY(0,21);
+        pspDebugScreenPrintf("WLAN-Switch-Status: OFF");
     }
     
-
+    pspDebugScreenSetXY(0,32);
     pspDebugScreenPrintf("Press O to exit");
 
     
