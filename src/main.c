@@ -10,6 +10,7 @@ int main()
     pspDebugScreenInit();
     int aktiv = 1;
     int menu = 0;
+    int letztesmenu = -1;
     SceCtrlData controller;
 
     while  (aktiv == 1) {
@@ -20,20 +21,28 @@ if (controller.Buttons & PSP_CTRL_CROSS) {
 }
 
 if (menu == 0) {
-    pspDebugScreenClear();
+    if (letztesmenu != menu) {
+        pspDebugScreenClear();
+        letztesmenu = menu;
+    
     pspDebugScreenPrintf("PSP System Monitor\n");
     pspDebugScreenPrintf("Press X to start\n");
     pspDebugScreenPrintf("Press O to exit\n");
     sceKernelDelayThread(10000);
+    }
 
 }
 if (menu == 1) {
-    pspDebugScreenClear();
-    pspDebugScreenPrintf("=================================================\n");
-    pspDebugScreenPrintf("System-Monitor\n");
-    pspDebugScreenPrintf("=================================================\n\n\n\n");
+    if (letztesmenu != menu) {
+        pspDebugScreenClear();
+        letztesmenu = menu;
+    
+    pspDebugScreenPrintf("====================================================================\n");
+    pspDebugScreenPrintf("                         System-Monitor\n");
+    pspDebugScreenPrintf("====================================================================\n\n\n\n");
     pspDebugScreenPrintf("Press O to exit\n");
     sceKernelDelayThread(10000);
+    }
 }
 
 if (controller.Buttons & PSP_CTRL_CIRCLE) {

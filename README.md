@@ -15,7 +15,7 @@
 - [x] Projekt aufsetzen (PSPSDK, GitHub-Repository)
 - [X] Erstes Programm auf der PSP ausführen
 - [X] Controller-Eingaben verarbeiten
-- [ ] Menü erstellen
+- [X] Menü erstellen
 - [ ] Batteriestatus anzeigen
 - [ ] Informationen zum Arbeitsspeicher anzeigen
 - [ ] CPU-Informationen anzeigen
