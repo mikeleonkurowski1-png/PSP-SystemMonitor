@@ -11,6 +11,15 @@
 #include <psputility_netmodules.h>
 
 
+//Farben definieren, damit man mit den Farben arbeiten kann, ohne jedes mal die Hex-Codes zu schreiben
+#define COLOR_WHITE   0xFFFFFFFF
+#define COLOR_CYAN    0xFFFFD800
+#define COLOR_GREEN   0xFF00FF00
+#define COLOR_RED     0xFF0000FF
+#define COLOR_ORANGE  0xFF00A5FF
+#define COLOR_YELLOW  0xFF00FFFF
+
+
 PSP_MODULE_INFO("PSP-SystemMonitor", 0, 1, 0);
 
 
@@ -70,9 +79,11 @@ if (menu == 0) {
         pspDebugScreenClear();
         letztesmenu = menu;
     
+        pspDebugScreenSetTextColor(COLOR_CYAN);
     pspDebugScreenPrintf("====================================================================\n");
     pspDebugScreenPrintf("                         System-Monitor\n");
     pspDebugScreenPrintf("====================================================================\n\n");
+    pspDebugScreenSetTextColor(COLOR_WHITE);
     pspDebugScreenPrintf("Press X to start\n");
     pspDebugScreenPrintf("Press O to exit\n");
     }
@@ -85,6 +96,7 @@ if (menu == 1) {
         pspDebugScreenClear();
         letztesmenu = menu;
     
+        pspDebugScreenSetTextColor(COLOR_CYAN);
     pspDebugScreenPrintf("====================================================================\n");
     pspDebugScreenPrintf("                         System-Monitor\n");
     pspDebugScreenPrintf("====================================================================\n\n");
@@ -93,15 +105,19 @@ if (menu == 1) {
 
     //pspDebugScreenPrintf("%d MHz\n", cpuClock);
     pspDebugScreenSetXY(0,5);
+    pspDebugScreenSetTextColor(COLOR_CYAN);
     pspDebugScreenPrintf("Software-Monitor:");
     pspDebugScreenSetXY(0,7);
+    pspDebugScreenSetTextColor(COLOR_WHITE);
     pspDebugScreenPrintf("Devkit Version: %d      ", devkitVersion);
     
 
     pspDebugScreenSetXY(0,11);
+    pspDebugScreenSetTextColor(COLOR_CYAN);
     pspDebugScreenPrintf("Hardware-Monitor: ");
     
         pspDebugScreenSetXY(0,13);
+    pspDebugScreenSetTextColor(COLOR_WHITE);
     pspDebugScreenPrintf("Current CPU Clock: %d MHz     ", cpuClock);
     pspDebugScreenSetXY(0,14);
     pspDebugScreenPrintf("Maximum CPU Clock: %d MHz      ", MaximumClock);
@@ -110,74 +126,99 @@ if (menu == 1) {
     pspDebugScreenPrintf("Free RAM: %.2f MB      ", totalFreeRAMSize / 1024.0 / 1024.0);
 
     pspDebugScreenSetXY(0,18);
-    pspDebugScreenPrintf("Battery-Percent: %d%%      ", batteryPercent);
-    if (chargingStatus) {
-        pspDebugScreenSetXY(0,19);
-        pspDebugScreenPrintf("Battery-Charging: Yes      ");
-    } else {
-        pspDebugScreenSetXY(0,19);
-        pspDebugScreenPrintf("Battery-Charging: No   ");
-
-    }
+    pspDebugScreenSetTextColor(COLOR_WHITE);
+    pspDebugScreenPrintf("Battery-Percent: ");
+            if (batteryPercent <= 20) pspDebugScreenSetTextColor(COLOR_RED);
+            else if (batteryPercent <= 50) pspDebugScreenSetTextColor(COLOR_YELLOW);
+            else pspDebugScreenSetTextColor(COLOR_GREEN);
+            pspDebugScreenPrintf("%d%%      ", batteryPercent);
+    
+    
+    pspDebugScreenSetXY(0, 19);
+            pspDebugScreenSetTextColor(COLOR_WHITE);
+            pspDebugScreenPrintf("Battery-Charging: ");
+            if (chargingStatus) {
+                pspDebugScreenSetTextColor(COLOR_GREEN);
+                pspDebugScreenPrintf("Yes      ");
+            } else {
+                pspDebugScreenSetTextColor(COLOR_RED);
+                pspDebugScreenPrintf("No   ");
+            }
 
     
 
-    if (wlanstatus2 == 1) {
-        pspDebugScreenSetXY(0,21);
-        pspDebugScreenPrintf("WLAN-Switch-Status: ON       ");
-    } else {
-        pspDebugScreenSetXY(0,21);
-        pspDebugScreenPrintf("WLAN-Switch-Status: OFF      ");
-    }
+    pspDebugScreenSetXY(0, 21);
+            pspDebugScreenSetTextColor(COLOR_WHITE);
+            pspDebugScreenPrintf("WLAN-Switch-Status: ");
+            if (wlanstatus2 == 1) {
+                pspDebugScreenSetTextColor(COLOR_GREEN);
+                pspDebugScreenPrintf("ON       ");
+            } else {
+                pspDebugScreenSetTextColor(COLOR_RED);
+                pspDebugScreenPrintf("OFF      ");
+            }
 
     union SceNetApctlInfo info;
 
 
-    pspDebugScreenSetXY(0,23);
-    if (netState == 4) {
-        sceNetApctlGetInfo(8, &info);
-        pspDebugScreenPrintf("IP-Address: %s                 ", info.ip);
-    } else {
-        pspDebugScreenPrintf("IP-Address: Not connected      ");
-    } 
+    // Signal-Stärke
+            pspDebugScreenSetXY(0, 22);
+            pspDebugScreenSetTextColor(COLOR_WHITE);
+            pspDebugScreenPrintf("Signal-Strength: ");
+            if (netState == 4) {
+                sceNetApctlGetInfo(5, &info);
+                pspDebugScreenSetTextColor(COLOR_GREEN);
+                pspDebugScreenPrintf("%d%%                ", info.strength);
+            } else {
+                pspDebugScreenSetTextColor(COLOR_RED);
+                pspDebugScreenPrintf("Not connected      ");
+            }
+
+            // IP-Adresse
+            pspDebugScreenSetXY(0, 23);
+            pspDebugScreenSetTextColor(COLOR_WHITE);
+            pspDebugScreenPrintf("IP-Address: ");
+            if (netState == 4) {
+                sceNetApctlGetInfo(8, &info);
+                pspDebugScreenSetTextColor(COLOR_GREEN);
+                pspDebugScreenPrintf("%s                 ", info.ip);
+            } else {
+                pspDebugScreenSetTextColor(COLOR_RED);
+                pspDebugScreenPrintf("Not connected      ");
+            }
 
 
+    // Netzwerk Status
+            pspDebugScreenSetXY(0, 24);
+            pspDebugScreenSetTextColor(COLOR_WHITE);
+            pspDebugScreenPrintf("Network-State: ");
+            switch(netState) {
+                case 0:
+                    pspDebugScreenSetTextColor(COLOR_RED);
+                    pspDebugScreenPrintf("Disconnected          ");
+                    break;
+                case 1:
+                    pspDebugScreenSetTextColor(COLOR_ORANGE);
+                    pspDebugScreenPrintf("Scanning              ");
+                    break;
+                case 2:
+                    pspDebugScreenSetTextColor(COLOR_YELLOW);
+                    pspDebugScreenPrintf("Joining               ");
+                    break;
+                case 3:
+                    pspDebugScreenSetTextColor(COLOR_YELLOW);
+                    pspDebugScreenPrintf("Getting IP Address    "); 
+                    break;
+                case 4:
+                    pspDebugScreenSetTextColor(COLOR_GREEN); 
+                    pspDebugScreenPrintf("Connected             ");
+                    break;
+                default:
+                    pspDebugScreenSetTextColor(COLOR_RED);
+                    pspDebugScreenPrintf("Unknown               ");
+            }
 
-    pspDebugScreenSetXY(0,22);
-    if (netState == 4) {
-        sceNetApctlGetInfo(5, &info);
-    pspDebugScreenPrintf("Signal-Strength: %d%%                ", info.strength);
-    } else {
-        pspDebugScreenPrintf("Signal-Strength: Not connected      ");
-    }
-
-    switch(netState) {
-        case 0:
-            pspDebugScreenSetXY(0,24);
-            pspDebugScreenPrintf("Network-State: Disconnected          ");
-            break;
-        case 1:
-            pspDebugScreenSetXY(0,24);
-            pspDebugScreenPrintf("Network-State: Scanning              ");
-            break;
-        case 2:
-            pspDebugScreenSetXY(0,24);
-            pspDebugScreenPrintf("Network-State: Joining              ");
-            break;
-        case 3:
-            pspDebugScreenSetXY(0,24);
-            pspDebugScreenPrintf("Network-State: Getting IP Address       "); 
-            break;
-        case 4:
-            pspDebugScreenSetXY(0,24);   
-            pspDebugScreenPrintf("Network-State: Connected             ");
-            break;
-        default:
-            pspDebugScreenSetXY(0,24);
-            pspDebugScreenPrintf("Network-State: Unknown               ");
-    }
-    
-
+    pspDebugScreenSetTextColor(COLOR_WHITE);
     pspDebugScreenSetXY(0,31);
     pspDebugScreenPrintf("Press □ (square) to connect/disconnect to a WLAN-Access-Point");
 
