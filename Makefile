@@ -8,7 +8,7 @@ CFLAGS = -O2 -G0 -Wall
 
 BUILD_PRX = 1
 
-LIBS = -lpspdebug -lpspdisplay -lpsppower -lpspctrl -lpspwlan -lpspaudio -lpspaudiocodec -lpspaudiolib -lpspnet -lpspnet_inet -lpspnet_apctl	
+LIBS = -lpspdebug -lpspdisplay -lpsppower -lpspctrl -lpspwlan -lpspaudio -lpspaudiocodec -lpspaudiolib -lpspnet -lpspnet_inet -lpspnet_apctl -lpsputility	
 
 EXTRA_TARGETS = EBOOT.PBP
 
