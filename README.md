@@ -21,7 +21,7 @@
 - [X] CPU-Informationen anzeigen
 - [X] Devkit-Version anzeigen
 - [X] Bildschirm regelmäßig aktualisieren
-- [ ] Optional: Farbiges Menü
+- [X] Farbiges Menü
 - [ ] Optional: Grafische Oberfläche
 
 ## Tech Stack
@@ -44,6 +44,7 @@
   
 ## Demo: 
 
-![App im PSP-Homescreen:](Demo/Demo2.png)
-![Startmenü:](Demo/Demo1.png)
-![SystemMonitor:](Demo/Demo3.png)
+![App im PSP-Homescreen:](Demo/Demo1.png)
+![Startmenü:](Demo/menu.jpg)
+![SystemMonitor (WLAN offline):](Demo/wlanoff.jpg)
+![SystemMonitor (WLAN online):](Demo/wlanon.jpg)
