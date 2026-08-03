@@ -1,50 +1,59 @@
 # PSP-SystemMonitor
 
-- in Homebrew-SystemMonitor für die Sony PSP, geschrieben in C mit dem PSPSDK.
-- Das Programm soll verschiedene Systeminformationen der PSP, wie Akkustand, CPU-Daten, etc übersichtlich auf dem Bildschirm darstellen und soll als erstes Einstiegsprojekt in die Entwicklung von PSP-Homebrew Anwendungen, bzw allgemein als Einstieg in die hardwarenahe Entwicklung mit C für mich dienen.
+- A homebrew system monitor application for the Sony PSP, written in **C** using the **PSPSDK**.
+- Designed to display real-time PSP system metrics (battery status, CPU metrics, RAM usage) in a clean interface.
+- Built as an introductory project to low-level C programming and PSP homebrew development.
 
 ## Features
 
-- Anzeige von Systeminformationen direkt auf der PSP 
-- Controllersteuerung
-- Übersichtliche Benutzeroberfläche 
-- Erweiterbar um weitere Systeminformationen 
+- **Real-Time System Metrics:** Displays core hardware statistics directly on the PSP screen.
+- **Hardware Controller Input:** Full navigation powered by PSP buttons via the SDK input interface.
+- **Colored UI Menu:** Clean, color-coded menu layout for improved readability.
+- **Extensible Architecture:** Modular structure allowing easy integration of additional system calls and metrics.
+
+## Tech Stack & Toolchain
+
+- **Language:** C
+- **SDK:** PSPSDK
+- **Build System:** GNU Make (Makefile)
+- **Version Control:** Git, GitHub
 
 ## Roadmap
 
-- [x] Projekt aufsetzen (PSPSDK, GitHub-Repository)
-- [X] Erstes Programm auf der PSP ausführen
-- [X] Controller-Eingaben verarbeiten
-- [X] Menü erstellen
-- [X] Batteriestatus anzeigen
-- [X] Informationen zum Arbeitsspeicher anzeigen
-- [X] CPU-Informationen anzeigen
-- [X] Devkit-Version anzeigen
-- [X] Bildschirm regelmäßig aktualisieren
-- [X] Farbiges Menü
-- [ ] Optional: Grafische Oberfläche
+- [x] Project & Toolchain setup (PSPSDK, GitHub repository)
+- [x] Hello World execution on hardware/emulator
+- [x] Controller input processing (`pspctrl` handling)
+- [x] Main menu structure implementation
+- [x] Battery status tracking (charge percentage, battery life time)
+- [x] RAM / Memory allocation usage display
+- [x] CPU frequency and status monitoring
+- [x] Devkit / Firmware version detection
+- [x] Screen refresh loop optimization
+- [x] Color-coded UI interface
+- [ ] *Optional / Planned:* Graphical user interface (GUI) with custom assets
 
-## Tech Stack
+## Installation & Setup
 
-- Sprache: C
-- SDK: PSPSDK
-- Build-System: Make
-- Versionsverwaltung: Git, GitHub
+To install and run **PSP-SystemMonitor** on a custom firmware PSP:
 
-## Installation
+1. Download the latest `EBOOT.PBP` file from the **Releases** section on GitHub.
+2. Connect your PSP to your computer using a USB cable (navigate to **Settings → USB Connection** on your PSP).
+3. Open the PSP Memory Stick directory and navigate to `PSP/GAME/`.
+4. Create a new folder inside `GAME` named `SystemMonitor`.
+5. Copy the downloaded `EBOOT.PBP` file into the newly created `PSP/GAME/SystemMonitor/` directory.
+6. Safely disconnect your PSP from your computer.
+7. Launch **SystemMonitor** from the **Game → Memory Stick** menu on your PSP.
 
-- Um den PSP-SystemMonitor selbst verwenden zu können müssen sie folgenden Schritten folgen:
-  1. Laden Sie die Datei names "EBOOT.PBP" unter "Releases" herunter
-  2. Verbinden sie ihre PSP per USB-Kabel mit ihrem Laptop (Gehen sie dazu nach anstecken des Kabels in den Einstellungen ihrer PSP auf "USB verbindung herstellen")
-  3. Greifen Sie auf den Memory-Stick ihrer PSP zu und und gehen sie in den Unterordner namen "Games"
-  4. Erstellen sie dort einen neuen Ordner an und geben sie diesem einen beliebigen Namen. (Am besten "SystemMonitor" oder ähnlich, da dieser Name entscheidet, wie das Programm auf ihrer Konsole heißen wird)
-  5. Fügen sie die Datei "EBOOT.PBP" dort ein
-  6. Trennen sie nun sicher die PSP von ihrem Laptop
-  7. Nun finden sie unter ihren PSP Spielen die SystemMonitor-Anwendung
-  
-## Demo: 
+## Demo
 
-![App im PSP-Homescreen:](Demo/Demo1.png)
-![Startmenü:](Demo/menu.jpg)
-![SystemMonitor (WLAN offline):](Demo/wlanoff.jpg)
-![SystemMonitor (WLAN online):](Demo/wlanon.jpg)
+- **App on PSP Homescreen:**  
+  ![App on PSP Homescreen](Demo/Demo1.png)
+
+- **Start Menu:**  
+  ![Start Menu](Demo/menu.jpg)
+
+- **System Monitor (WLAN Offline):**  
+  ![System Monitor WLAN Offline](Demo/wlanoff.jpg)
+
+- **System Monitor (WLAN Online):**  
+  ![System Monitor WLAN Online](Demo/wlanon.jpg)
